@@ -8,3 +8,13 @@
 - [] Technische Aspekte: was steckt hinter der Applikation?
 - [] Sicherheitsaspekte: Was muss beachtet werden?
 - [] Strukturiertes vorgehen: Testprotokolle
+
+### Gefahren
+
+Grundwerte der Gefahren:
+
+- Vertraulichkeit
+- Verfügbarkeit
+- Integrität
+- Authentizität
+- Verbindlichkeit
