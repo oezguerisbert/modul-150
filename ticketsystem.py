@@ -1,15 +1,18 @@
 import random
 import os
+from datetime import datetime
 
 
 class Ticket:
   titel = ""
   problem = ""
+  datum = ""
   zustaendigkeit = 0
   ort_raum = ""
   prio = 2
-  def __init__(self, t, p, z, o, pr):
+  def __init__(self, t, d, p, z, o, pr):
     self.titel = t
+    self.datum = d
     self.problem = p
     self.zustaendigkeit = z
     self.ort_raum = o
@@ -17,7 +20,7 @@ class Ticket:
 
   def create(self):
     file = open("tickets.txt", "a+")
-    file.write("Titel: '%s'\nProblem: '%s'\nZusändigkeit: '%d'\nOrt/Raum: '%s'\nPrio: '%d'\n------------------------------\n"%(titel, problem, zustaendigkeit, ort_raum, prio))
+    file.write("Datum: %s\nTitel: '%s'\nProblem: '%s'\nZusändigkeit: '%d'\nOrt/Raum: '%s'\nPrio: '%d'\n------------------------------\n"%(self.datum, self.titel, self.problem, self.zustaendigkeit, self.ort_raum, self.prio))
     file.close()
     print("Das Ticket wurde abgespeichert!")
 
@@ -39,6 +42,8 @@ cls()
 action = int(input("Was wollen Sie machen?\n[1] Ticket hinzufügen\n[2] Tickets auflisten\n\n"))
 
 if action == 1:
+
+  datum = datetime.now(tz=None)
   zahl1 = random.randint(1, 10)
   zahl2 = random.randint(1, 10)
   cls()
@@ -56,7 +61,7 @@ if action == 1:
     cls()
     bestaetigen = input("Ist diese Information korrekt?\n\nTitel: '%s'\nProblem: '%s'\nZusändigkeit: '%d'\nOrt/Raum: '%s'\nPrio: '%d'\n---------------------------\nKorrekt (y/n)\n"%(titel, problem, zustaendigkeit, ort_raum, prio))
     if bestaetigen == "y":
-      Ticket(titel, problem, zustaendigkeit, ort_raum, prio).create()
+      Ticket(titel, datum, problem, zustaendigkeit, ort_raum, prio).create()
     else:
       print("Alles klar, abgebrochen.")
 elif action == 2:
